@@ -66,7 +66,7 @@
 
   /* ---------- HERO ---------- */
   .hero{ position:relative; background:var(--secondary); overflow:hidden; min-height:680px; display:flex; flex-direction:column; }
-  .hero-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 74%; transform:translateY(-85px); z-index:0; }
+  .hero-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 85%; transform:translateY(0px); z-index:0; }
   .hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none; }
   .hero::before{
     content:""; position:absolute; right:-120px; top:-120px; width:520px; height:520px;
@@ -836,7 +836,7 @@
       var updateParallax = function(){
         var rect = heroSection.getBoundingClientRect();
         if(rect.bottom > 0 && rect.top < window.innerHeight){
-          var offset = -85 - (window.scrollY * 0.25);
+          var offset = 0 - (window.scrollY * 0.25);
           heroVideo.style.transform = 'translateY(' + offset + 'px)';
         }
         ticking = false;
