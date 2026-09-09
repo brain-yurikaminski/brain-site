@@ -65,8 +65,9 @@
   @media (max-width:900px){ .topnav ul{display:none;} }
 
   /* ---------- HERO ---------- */
-  .hero{ position:relative; background:var(--secondary); overflow:hidden; min-height:680px; display:flex; flex-direction:column; }
-  .hero-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 74%; transform:translateY(-85px); z-index:0; }
+  .hero{ position:relative; background:var(--secondary); overflow:hidden; min-height:715px; display:flex; flex-direction:column; }
+  .hero-bg-video{ position:absolute; top:0; left:50%; width:max(1750px,100%); max-width:none; margin-left:min(-875px,-50%); height:100%; object-fit:cover; object-position:50% 100%; transform:translateY(0px); z-index:0; }
+  @media (min-width:1750px){ .hero-bg-video{ object-position:50% 85%; } }
   .hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none; }
   .hero::before{
     content:""; position:absolute; right:-120px; top:-120px; width:520px; height:520px;
@@ -108,13 +109,13 @@
   .btn-outline{background:transparent; color:var(--hi); border:1px solid rgba(234,240,255,0.4);}
   .btn-outline:hover{border-color:var(--hi);}
 
-  @media (max-width:900px){ .hero{min-height:640px;} .hero-tagline-vert{display:none;} }
+  @media (max-width:900px){ .hero{min-height:640px; background:var(--n900);} .hero-bg-video{display:none;} .hero-tagline-vert{display:none;} }
 
   /* ---------- PROOF BAND ---------- */
   .proof-band{ background:var(--secondary); padding:0; border-top:1px solid rgba(255,255,255,0.14); }
   .proof-heading{
     font-family:'Roboto Mono',monospace; font-size:15px; color:#fff; text-align:center;
-    padding:28px 6% 0; margin:0;
+    padding:28px 6% 24px; margin:0;
   }
   .proof-grid{ display:grid; grid-template-columns:repeat(3,1fr); }
   .proof-item{ padding:32px 24px; text-align:center; border-right:1px solid rgba(255,255,255,0.14); }
@@ -208,16 +209,6 @@
   .infra-col{ background:var(--n800); padding:20px; }
   .infra-col .col-title{ color:var(--accent-data); font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; display:block; margin-bottom:10px; }
   .infra-col p{ color:var(--mid); font-family:'Inter'; font-size:14px; line-height:1.6; margin:0; }
-  .clean-room-diagram{ width:100%; height:auto; margin-top:28px; }
-  .flow-dot{ animation:cleanRoomFlow 2.6s ease-in-out infinite; }
-  .flow-dot-2{ animation-direction:reverse; }
-  @keyframes cleanRoomFlow{
-    0%{ transform:translateX(0); opacity:0; }
-    15%{ opacity:1; }
-    85%{ opacity:1; }
-    100%{ transform:translateX(56px); opacity:0; }
-  }
-  @media (prefers-reduced-motion:reduce){ .flow-dot{animation:none; opacity:1;} }
   @media (max-width:860px){ .infra-card{grid-template-columns:1fr;} .infra-visual img{min-height:220px;} .infra-cols{grid-template-columns:1fr;} }
 
   /* ---------- SETORES (interativo) ---------- */
@@ -356,11 +347,11 @@
 </section>
 
 <section class="proof-band">
-  <p class="proof-heading">Uma empresa do ecossistema Grupo Arka: engajamento, fidelidade, martech e mídiatech.</p>
+  <p class="proof-heading">Uma empresa do ecossistema Grupo Arka<br>Engajamento, fidelidade, martech e mídiatech.</p>
   <div class="proof-grid">
-    <div class="proof-item"><div class="num">18+</div><div class="label">anos de atuação do Grupo Arka em mercado financeiro, retail e mídia</div></div>
-    <div class="proof-item"><div class="num">06</div><div class="label">produtos ativos endereçando dores específicas do ecossistema</div></div>
-    <div class="proof-item"><div class="num">100%</div><div class="label">operação AI-first: IA não é só o nosso core, é o nosso flow</div></div>
+    <div class="proof-item"><div class="num" data-count-to="18" data-suffix="+">0+</div><div class="label">anos de atuação do Grupo Arka em mercado financeiro, retail e mídia</div></div>
+    <div class="proof-item"><div class="num" data-count-to="6" data-pad="2">00</div><div class="label">produtos ativos endereçando dores específicas do ecossistema</div></div>
+    <div class="proof-item"><div class="num" data-count-to="100" data-suffix="%">0%</div><div class="label">operação AI-first: IA não é só o nosso core, é o nosso flow</div></div>
   </div>
 </section>
 
@@ -380,7 +371,7 @@
           <span class="flow-step-label">01 / conecte</span>
         </div>
         <h3>Dados organizados, não fragmentados</h3>
-        <p>Mídia, vendas, ERP, CRM e fidelidade vivem em sistemas separados. A Brain conecta e gera inteligência.</p>
+        <p>Mídia, vendas, ERP, CRM e fidelidade vivem em sistemas separados. A Brain conecta tudo isso, adiciona contexto extraído das suas ferramentas de trabalho e gera inteligência acionável.</p>
         <div class="flow-connector"><svg viewBox="0 0 24 24"><circle class="pulse" cx="12" cy="12" r="4"/><path fill="none" stroke="var(--accent-data)" stroke-width="2" stroke-linecap="round" d="M4 12h13m0 0l-4-4m4 4l-4 4"/></svg></div>
       </div>
       <div class="flow-card">
@@ -402,7 +393,7 @@
           <span class="flow-step-label">03 / aja</span>
         </div>
         <h3>Execute, meça e melhore</h3>
-        <p>O plano vira ação executada nas suas ferramentas pelos nossos agentes, coletando resultados e sugerindo melhorias, fechando o loop do seu negócio.</p>
+        <p>O plano vira ação executada nas suas ferramentas pelos nossos agentes, coletando resultados e sugerindo melhorias, fechando o loop de melhoria contínua do seu negócio.</p>
       </div>
     </div>
   </div>
@@ -412,7 +403,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="overline">Diferenciais</span>
-      <h2>Por que não somos um CDP: entregamos inteligência acionável, não apenas dados</h2>
+      <h2>Não somos CDP, e nem BI: Entregamos inteligência acionável não apenas dados.</h2>
       <p>Enquanto plataformas de analytics tradicionais dependem de integrações genéricas, a Brain 003 constrói parcerias diretas com o ecossistema.</p>
     </div>
     <div class="grid-3">
@@ -425,8 +416,8 @@
         <p>Visão do comportamento de consumo a partir de milhões de pessoas do ecossistema.</p>
       </div>
       <div class="info-card">
-        <span class="overline">Loop de ação fechado com parceiros</span>
-        <p>O insight gera ação direto nas plataformas dos parceiros, sem depender de execução manual do cliente.</p>
+        <span class="overline">Loop de ação fechado</span>
+        <p>O insight gera ação executada nas suas plataformas pelos nossos agentes, removendo o trabalho braçal do seu time.</p>
       </div>
     </div>
   </div>
@@ -543,27 +534,13 @@
         <div class="infra-cols">
           <div class="infra-col">
             <span class="col-title">Conexão</span>
-            <p>A Brain003 se conecta ao armazenamento que você já usa. O dado não é copiado, não é movido e não muda de dono. A nossa infraestrutura é o processamento, não a cópia da base. Sem projeto de migração e sem duplicar custo de storage.</p>
+            <p>A Brain003 se conecta ao armazenamento que você já usa. O dado não é copiado, não é movido e não muda de dono. Nossa plataforma é o processamento, não a cópia da base. Sem projeto de migração e sem custo extra de storage.</p>
           </div>
           <div class="infra-col">
             <span class="col-title">Cruzamento</span>
-            <p>Quando faz sentido cruzar seus dados com dados do ecossistema, o encontro acontece num Data Clean Room: um ambiente neutro onde nenhuma parte acessa o dado bruto da outra. Entendemos melhor quem é o seu cliente, com base na média de milhões de clientes parecidos com ele em nossa base através de segmentos e lookalikes.</p>
+            <p>Quando você aciona o enriquecimento de dados usando nosso ecossistema, o cruzamento acontece num Data Clean Room: um ambiente neutro onde nenhuma parte acessa o dado bruto da outra. Agregamos informações estratégicas sobre os seus cliente usando a média de milhares de clientes parecidos com ele em nossa base através de segmentos e lookalikes.</p>
           </div>
         </div>
-        <svg class="clean-room-diagram" viewBox="0 0 400 90" fill="none">
-          <rect x="8" y="30" width="76" height="30" rx="0" stroke="var(--stroke)" stroke-width="1"/>
-          <text x="46" y="49" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="var(--mid)">Sua base</text>
-          <rect x="316" y="30" width="76" height="30" rx="0" stroke="var(--stroke)" stroke-width="1"/>
-          <text x="354" y="49" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="var(--mid)">Base do parceiro</text>
-          <rect x="140" y="14" width="120" height="62" rx="0" stroke="var(--accent-data)" stroke-width="1.5"/>
-          <text x="200" y="33" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" letter-spacing="1" fill="var(--accent-data)">CLEAN ROOM</text>
-          <circle cx="200" cy="53" r="10" stroke="var(--accent-data)" stroke-width="1.5"/>
-          <path d="M196 53l3 3 6-7" stroke="var(--accent-data)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="84" y1="45" x2="140" y2="45" stroke="var(--stroke)" stroke-width="1.5"/>
-          <line x1="260" y1="45" x2="316" y2="45" stroke="var(--stroke)" stroke-width="1.5"/>
-          <circle class="flow-dot" cx="84" cy="45" r="3" fill="var(--accent-synapse)"/>
-          <circle class="flow-dot flow-dot-2" cx="316" cy="45" r="3" fill="var(--accent-synapse)"/>
-        </svg>
       </div>
     </div>
   </div>
@@ -832,25 +809,48 @@
     wireTabs('.sector-tab', '.sector-panel', 'data-sector', 'data-panel');
     wireTabs('.solutions-tab', '.solutions-panel', 'data-sol', 'data-panel');
 
-    /* ---- parallax do vídeo do hero ---- */
-    var heroVideo = document.querySelector('.hero-bg-video');
-    var heroSection = document.querySelector('.hero');
-    if(heroVideo && heroSection && !reduceMotion){
-      var ticking = false;
-      var updateParallax = function(){
-        var rect = heroSection.getBoundingClientRect();
-        if(rect.bottom > 0 && rect.top < window.innerHeight){
-          var offset = -85 - (window.scrollY * 0.25);
-          heroVideo.style.transform = 'translateY(' + offset + 'px)';
-        }
-        ticking = false;
+    /* ---- contagem animada da proof band ---- */
+    var countEls = document.querySelectorAll('.proof-item .num[data-count-to]');
+    if(countEls.length){
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var formatCount = function(el, value){
+        var suffix = el.getAttribute('data-suffix') || '';
+        var pad = parseInt(el.getAttribute('data-pad'), 10) || 0;
+        var s = String(Math.round(value));
+        if(pad) s = s.padStart(pad, '0');
+        return s + suffix;
       };
-      window.addEventListener('scroll', function(){
-        if(!ticking){
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
+      var animateCount = function(el){
+        var target = parseFloat(el.getAttribute('data-count-to')) || 0;
+        if(prefersReduced){
+          el.textContent = formatCount(el, target);
+          return;
         }
-      }, {passive:true});
+        var duration = 1400;
+        var start = null;
+        var ease = function(t){ return 1 - Math.pow(1 - t, 3); };
+        var step = function(ts){
+          if(start === null) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          el.textContent = formatCount(el, target * ease(progress));
+          if(progress < 1) requestAnimationFrame(step);
+          else el.textContent = formatCount(el, target);
+        };
+        requestAnimationFrame(step);
+      };
+      if(window.IntersectionObserver){
+        var countObserver = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(entry.isIntersecting){
+              animateCount(entry.target);
+              countObserver.unobserve(entry.target);
+            }
+          });
+        }, {threshold:0.4});
+        countEls.forEach(function(el){ countObserver.observe(el); });
+      } else {
+        countEls.forEach(animateCount);
+      }
     }
 
     /* ---- modal: fale com a gente ---- */
