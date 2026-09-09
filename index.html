@@ -65,8 +65,8 @@
   @media (max-width:900px){ .topnav ul{display:none;} }
 
   /* ---------- HERO ---------- */
-  .hero{ position:relative; background:var(--secondary); overflow:hidden; min-height:1040px; display:flex; flex-direction:column; }
-  .hero-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 74%; transform:translateY(-45px); z-index:0; }
+  .hero{ position:relative; background:var(--secondary); overflow:hidden; min-height:760px; display:flex; flex-direction:column; }
+  .hero-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 74%; transform:translateY(-85px); z-index:0; }
   .hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none; }
   .hero::before{
     content:""; position:absolute; right:-120px; top:-120px; width:520px; height:520px;
@@ -79,7 +79,7 @@
   }
   .hero-content{
     flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
-    text-align:center; padding:140px 6% 63px; position:relative; z-index:2;
+    text-align:center; padding:96px 6% 48px; position:relative; z-index:2;
   }
   .hero-context{
     font-family:'Roboto Mono',monospace; font-size:13px; color:rgba(234,240,255,0.75);
@@ -87,7 +87,6 @@
   }
   .hero h1{
     font-size:clamp(34px, 4.6vw, 60px); font-weight:700; line-height:1.08; letter-spacing:-0.03em; color:var(--hi);
-    text-shadow:0 2px 6px rgba(0,0,0,0.85), 0 4px 40px rgba(0,0,0,0.7);
     max-width:20ch;
   }
   .hero h1 .rotator-word{
@@ -113,7 +112,7 @@
   .btn-outline{background:transparent; color:var(--hi); border:1px solid rgba(234,240,255,0.4);}
   .btn-outline:hover{border-color:var(--hi);}
 
-  @media (max-width:900px){ .hero{min-height:820px;} .hero-tagline-vert{display:none;} }
+  @media (max-width:900px){ .hero{min-height:640px;} .hero-tagline-vert{display:none;} }
 
   /* ---------- PROOF BAND ---------- */
   .proof-band{ background:var(--secondary); padding:0; border-top:1px solid rgba(255,255,255,0.14); }
@@ -278,7 +277,7 @@
   <div class="hero-content">
     <p class="hero-context">Uma empresa do ecossistema Grupo Arka: engajamento, fidelidade, martech e mídiatech.</p>
     <h1>Transformamos seus dados em <span class="rotator-word"><span id="typedWord"></span><span class="caret">|</span></span></h1>
-    <p class="hero-sub">A Brain 003 coleta e normaliza comportamentos de consumo, fidelidade e mídia, e conecta o ecossistema de parceiros para devolver estratégias de marca, produto e campanha já prontas para agir. Não mais um relatório para alguém interpretar.</p>
+    <p class="hero-sub">A Brain003 cruza seus dados de mídia, fidelidade e consumo com milhões de datapoints do ecossistema Arka e devolve estratégias de marca, campanhas e produto prontas para ação. Não mais um relatório para alguém interpretar.</p>
     <div class="hero-ctas">
       <a href="#contato" class="btn btn-white">Fale com a gente →</a>
       <a href="#solucoes" class="btn btn-outline">Ver soluções</a>
@@ -296,7 +295,8 @@
 
 <section class="section section-alt flow-intro" id="solucao">
   <div class="wrap">
-    <h2>Conecte. Pergunte. Ative.</h2>
+    <span class="overline" style="color:var(--accent-data);">Do dado à próxima ação</span>
+    <h2>Um ambiente que aprende com o próprio ecossistema</h2>
     <p>A complexidade fica por baixo. Para o seu time, a experiência começa com uma pergunta de negócio, passa pela estruturação agêntica do fluxo e termina com mensuração do resultado. Tudo em um só lugar.</p>
   </div>
   <div class="wrap" style="margin-top:48px;">
@@ -306,33 +306,30 @@
           <div class="flow-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="4" r="1.6" fill="#fff" stroke="none"/><circle cx="12" cy="20" r="1.6" fill="#fff" stroke="none"/><circle cx="4" cy="12" r="1.6" fill="#fff" stroke="none"/><circle cx="20" cy="12" r="1.6" fill="#fff" stroke="none"/><line x1="12" y1="6" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="18" y2="12"/></svg>
           </div>
-          <span class="flow-step-label">01 / conectar</span>
+          <span class="flow-step-label">01 / conecte</span>
         </div>
-        <h3>Uma base de comportamento</h3>
-        <p>A Brain003 conecta warehouse, CRM, mídia, fidelidade e vendas sem exigir que o dado mude de dono.</p>
-        <div class="flow-tag">CRM · mídia · compras · fidelidade</div>
+        <h3>Dados organizados, não fragmentados</h3>
+        <p>Mídia, vendas, ERP, CRM e fidelidade vivem em sistemas separados. A Brain conecta e gera inteligência.</p>
       </div>
       <div class="flow-card">
         <div class="flow-card-top">
           <div class="flow-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 12c2-4 4-4 6 0s4 4 6 0 4-4 4-4"/><circle cx="4" cy="12" r="1.6" fill="#fff" stroke="none"/><circle cx="20" cy="8" r="1.6" fill="#fff" stroke="none"/></svg>
           </div>
-          <span class="flow-step-label">02 / perguntar</span>
+          <span class="flow-step-label">02 / pergunte</span>
         </div>
-        <h3>Linguagem natural, contexto real</h3>
-        <p>O usuário descreve o objetivo. Agentes transformam o briefing em consultas, cruzamentos e cenários comparáveis.</p>
-        <div class="flow-tag">"Onde estão meus clusters com maior potencial?"</div>
+        <h3>As perguntas relevantes para sua empresa respondidas em só lugar</h3>
+        <p>Você descreve o objetivo. Nossos agentes transformam o briefing em consultas, cruzamentos e cenários comparáveis e te devolvem um plano de ação personalizado.</p>
       </div>
       <div class="flow-card">
         <div class="flow-card-top">
           <div class="flow-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/><line x1="6" y1="6" x2="10" y2="10"/><line x1="18" y1="6" x2="14" y2="10"/><line x1="6" y1="18" x2="10" y2="14"/><line x1="18" y1="18" x2="14" y2="14"/></svg>
           </div>
-          <span class="flow-step-label">03 / ativar</span>
+          <span class="flow-step-label">03 / aja</span>
         </div>
-        <h3>Decisão pronta para execução</h3>
-        <p>A resposta chega como audiência, distribuição de verba, projeção de conversão e próximo passo recomendado.</p>
-        <div class="flow-tag">integração com suas fontes de dados → canal → audiência → verba → workflow estruturado e agendado → resultado mensurado</div>
+        <h3>Execute, meça e melhore</h3>
+        <p>O plano vira ação executada nas suas ferramentas pelos nossos agentes, coletando resultados e sugerindo melhorias, fechando o loop do seu negócio.</p>
       </div>
     </div>
   </div>
