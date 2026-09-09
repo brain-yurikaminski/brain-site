@@ -343,11 +343,11 @@
 </section>
 
 <section class="proof-band">
-  <p class="proof-heading">Uma empresa do ecossistema Grupo Arka: engajamento, fidelidade, martech e mídiatech.</p>
+  <p class="proof-heading">Uma empresa do ecossistema Grupo Arka<br>Engajamento, fidelidade, martech e mídiatech.</p>
   <div class="proof-grid">
-    <div class="proof-item"><div class="num">18+</div><div class="label">anos de atuação do Grupo Arka em mercado financeiro, retail e mídia</div></div>
-    <div class="proof-item"><div class="num">06</div><div class="label">produtos ativos endereçando dores específicas do ecossistema</div></div>
-    <div class="proof-item"><div class="num">100%</div><div class="label">operação AI-first: IA não é só o nosso core, é o nosso flow</div></div>
+    <div class="proof-item"><div class="num" data-count-to="18" data-suffix="+">0+</div><div class="label">anos de atuação do Grupo Arka em mercado financeiro, retail e mídia</div></div>
+    <div class="proof-item"><div class="num" data-count-to="6" data-pad="2">00</div><div class="label">produtos ativos endereçando dores específicas do ecossistema</div></div>
+    <div class="proof-item"><div class="num" data-count-to="100" data-suffix="%">0%</div><div class="label">operação AI-first: IA não é só o nosso core, é o nosso flow</div></div>
   </div>
 </section>
 
@@ -804,6 +804,50 @@
     }
     wireTabs('.sector-tab', '.sector-panel', 'data-sector', 'data-panel');
     wireTabs('.solutions-tab', '.solutions-panel', 'data-sol', 'data-panel');
+
+    /* ---- contagem animada da proof band ---- */
+    var countEls = document.querySelectorAll('.proof-item .num[data-count-to]');
+    if(countEls.length){
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var formatCount = function(el, value){
+        var suffix = el.getAttribute('data-suffix') || '';
+        var pad = parseInt(el.getAttribute('data-pad'), 10) || 0;
+        var s = String(Math.round(value));
+        if(pad) s = s.padStart(pad, '0');
+        return s + suffix;
+      };
+      var animateCount = function(el){
+        var target = parseFloat(el.getAttribute('data-count-to')) || 0;
+        if(prefersReduced){
+          el.textContent = formatCount(el, target);
+          return;
+        }
+        var duration = 1400;
+        var start = null;
+        var ease = function(t){ return 1 - Math.pow(1 - t, 3); };
+        var step = function(ts){
+          if(start === null) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          el.textContent = formatCount(el, target * ease(progress));
+          if(progress < 1) requestAnimationFrame(step);
+          else el.textContent = formatCount(el, target);
+        };
+        requestAnimationFrame(step);
+      };
+      if(window.IntersectionObserver){
+        var countObserver = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(entry.isIntersecting){
+              animateCount(entry.target);
+              countObserver.unobserve(entry.target);
+            }
+          });
+        }, {threshold:0.4});
+        countEls.forEach(function(el){ countObserver.observe(el); });
+      } else {
+        countEls.forEach(animateCount);
+      }
+    }
 
     /* ---- modal: fale com a gente ---- */
     var modal = document.getElementById('contactModal');
