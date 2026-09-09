@@ -829,27 +829,6 @@
     wireTabs('.sector-tab', '.sector-panel', 'data-sector', 'data-panel');
     wireTabs('.solutions-tab', '.solutions-panel', 'data-sol', 'data-panel');
 
-    /* ---- parallax do vídeo do hero ---- */
-    var heroVideo = document.querySelector('.hero-bg-video');
-    var heroSection = document.querySelector('.hero');
-    if(heroVideo && heroSection && !reduceMotion){
-      var ticking = false;
-      var updateParallax = function(){
-        var rect = heroSection.getBoundingClientRect();
-        if(rect.bottom > 0 && rect.top < window.innerHeight){
-          var offset = 0 - (window.scrollY * 0.25);
-          heroVideo.style.transform = 'translateY(' + offset + 'px)';
-        }
-        ticking = false;
-      };
-      window.addEventListener('scroll', function(){
-        if(!ticking){
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      }, {passive:true});
-    }
-
     /* ---- modal: fale com a gente ---- */
     var modal = document.getElementById('contactModal');
     var openModal = function(){
