@@ -65,8 +65,9 @@
   @media (max-width:900px){ .topnav ul{display:none;} }
 
   /* ---------- HERO ---------- */
-  .hero{ position:relative; background:var(--secondary); overflow:hidden; min-height:680px; display:flex; flex-direction:column; }
-  .hero-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 85%; transform:translateY(0px); z-index:0; }
+  .hero{ position:relative; background:var(--secondary); overflow:hidden; min-height:715px; display:flex; flex-direction:column; }
+  .hero-bg-video{ position:absolute; top:0; left:50%; width:max(1750px,100%); max-width:none; margin-left:min(-875px,-50%); height:100%; object-fit:cover; object-position:50% 100%; transform:translateY(0px); z-index:0; }
+  @media (min-width:1750px){ .hero-bg-video{ object-position:50% 85%; } }
   .hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none; }
   .hero::before{
     content:""; position:absolute; right:-120px; top:-120px; width:520px; height:520px;
