@@ -115,7 +115,7 @@
   .proof-band{ background:var(--secondary); padding:0; border-top:1px solid rgba(255,255,255,0.14); }
   .proof-heading{
     font-family:'Roboto Mono',monospace; font-size:15px; color:#fff; text-align:center;
-    padding:28px 6% 0; margin:0;
+    padding:28px 6% 24px; margin:0;
   }
   .proof-grid{ display:grid; grid-template-columns:repeat(3,1fr); }
   .proof-item{ padding:32px 24px; text-align:center; border-right:1px solid rgba(255,255,255,0.14); }
@@ -205,16 +205,6 @@
   .infra-col{ background:var(--n800); padding:20px; }
   .infra-col .col-title{ color:var(--accent-data); font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; display:block; margin-bottom:10px; }
   .infra-col p{ color:var(--mid); font-family:'Inter'; font-size:14px; line-height:1.6; margin:0; }
-  .clean-room-diagram{ width:100%; height:auto; margin-top:28px; }
-  .flow-dot{ animation:cleanRoomFlow 2.6s ease-in-out infinite; }
-  .flow-dot-2{ animation-direction:reverse; }
-  @keyframes cleanRoomFlow{
-    0%{ transform:translateX(0); opacity:0; }
-    15%{ opacity:1; }
-    85%{ opacity:1; }
-    100%{ transform:translateX(56px); opacity:0; }
-  }
-  @media (prefers-reduced-motion:reduce){ .flow-dot{animation:none; opacity:1;} }
   @media (max-width:860px){ .infra-card{grid-template-columns:1fr;} .infra-visual img{min-height:220px;} .infra-cols{grid-template-columns:1fr;} }
 
   /* ---------- SETORES (interativo) ---------- */
@@ -547,20 +537,6 @@
             <p>Quando faz sentido cruzar seus dados com dados do ecossistema, o encontro acontece num Data Clean Room: um ambiente neutro onde nenhuma parte acessa o dado bruto da outra. Entendemos melhor quem é o seu cliente, com base na média de milhões de clientes parecidos com ele em nossa base através de segmentos e lookalikes.</p>
           </div>
         </div>
-        <svg class="clean-room-diagram" viewBox="0 0 400 90" fill="none">
-          <rect x="8" y="30" width="76" height="30" rx="0" stroke="var(--stroke)" stroke-width="1"/>
-          <text x="46" y="49" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="var(--mid)">Sua base</text>
-          <rect x="316" y="30" width="76" height="30" rx="0" stroke="var(--stroke)" stroke-width="1"/>
-          <text x="354" y="49" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="var(--mid)">Base do parceiro</text>
-          <rect x="140" y="14" width="120" height="62" rx="0" stroke="var(--accent-data)" stroke-width="1.5"/>
-          <text x="200" y="33" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" letter-spacing="1" fill="var(--accent-data)">CLEAN ROOM</text>
-          <circle cx="200" cy="53" r="10" stroke="var(--accent-data)" stroke-width="1.5"/>
-          <path d="M196 53l3 3 6-7" stroke="var(--accent-data)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="84" y1="45" x2="140" y2="45" stroke="var(--stroke)" stroke-width="1.5"/>
-          <line x1="260" y1="45" x2="316" y2="45" stroke="var(--stroke)" stroke-width="1.5"/>
-          <circle class="flow-dot" cx="84" cy="45" r="3" fill="var(--accent-synapse)"/>
-          <circle class="flow-dot flow-dot-2" cx="316" cy="45" r="3" fill="var(--accent-synapse)"/>
-        </svg>
       </div>
     </div>
   </div>
