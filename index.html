@@ -201,7 +201,9 @@
 
   /* ---------- INFRAESTRUTURA ---------- */
   /* ---------- SEGURANÇA / CLEAN DATA ROOM (layout do Figma) ---------- */
-  .security{ background:var(--n900); padding:72px 0; overflow:hidden; }
+  /* clip, e não hidden: hidden criaria um scroll container e o view() dos cards
+     passaria a medir contra a seção em vez da viewport. */
+  .security{ background:var(--n900); padding:72px 0; overflow:clip; }
   .security-head{ max-width:1400px; margin:0 auto 48px; padding:0 5.2%; }
   .security-head .overline{ color:var(--accent-data); display:block; margin-bottom:14px; }
   .security-sub{ color:var(--mid); font-family:'Inter'; font-size:16px; line-height:1.6; margin:0; max-width:52ch; }
@@ -230,6 +232,11 @@
   }
   .card-conexao{ left:5.2%; top:36%; width:33%; border:1px solid rgba(0,207,255,0.55); }
   .card-cruzamento{ right:3.3%; bottom:7.6%; width:33%; border:1px solid rgba(30,43,255,0.85); }
+
+  /* A entrada dos cards é dirigida pelo scroll em JS (wireCleanRoomScroll):
+     o estado final é o que está declarado aqui, e o JS só aplica o
+     deslocamento enquanto a seção não está centralizada. */
+  .security-card{ will-change:transform, opacity; }
   @media (max-width:900px){
     .security-stage{ display:flex; flex-direction:column; gap:24px; padding:0 6%; }
     .security-media{ width:100%; max-width:420px; order:2; }
@@ -860,6 +867,43 @@
     }
     wireTabs('.sector-tab', '.sector-panel', 'data-sector', 'data-panel');
     wireTabs('.solutions-tab', '.solutions-panel', 'data-sol', 'data-panel');
+
+    /* ---- Clean Data Room: cards entram com o scroll ----
+       Conexão vem da direita, Cruzamento da esquerda. Chegam na posição final
+       exatamente quando a seção fica centralizada na viewport. Feito em JS e não
+       com animation-timeline porque view()/scroll-driven ainda não pega em
+       Firefox nem em Safari mais antigo. */
+    (function wireCleanRoomScroll(){
+      var sec = document.getElementById('infraestrutura');
+      if(!sec) return;
+      var conexao = sec.querySelector('.card-conexao');
+      var cruzamento = sec.querySelector('.card-cruzamento');
+      if(!conexao || !cruzamento) return;
+      if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var DESLOC = 120; /* % da própria largura do card */
+      var ticking = false;
+
+      function apply(){
+        ticking = false;
+        var r = sec.getBoundingClientRect(), vh = window.innerHeight;
+        var distDoCentro = r.top + r.height / 2 - vh / 2;  /* 0 = seção centralizada */
+        var inicio = r.height / 2 + vh / 2;                /* valor acima quando o topo toca a base da tela */
+        var p = 1 - Math.min(Math.max(distDoCentro / inicio, 0), 1);
+        var resto = 1 - p;
+        conexao.style.transform = 'translateX(' + (resto * DESLOC) + '%)';
+        cruzamento.style.transform = 'translateX(' + (resto * -DESLOC) + '%)';
+        conexao.style.opacity = cruzamento.style.opacity = p;
+      }
+      function onScroll(){
+        if(ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(apply);
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('resize', onScroll);
+      apply();
+    })();
 
     /* ---- contagem animada da proof band ---- */
     var countEls = document.querySelectorAll('.proof-item .num[data-count-to]');
